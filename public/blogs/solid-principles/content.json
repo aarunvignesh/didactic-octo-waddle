@@ -1,0 +1,26 @@
+{
+  "head":{
+    "title":"Solid Principles",
+    "og:title":"SOLID Principles"
+  },
+  "body":{
+    "blog":{
+        "heading": "SOLID Principles",
+        "author": "Arun Vignesh A",
+        "content": [
+          {
+            "module":"sub_heading",
+            "value": "SOLID Principles are must to have"
+          },
+          {
+            "module":"paragraph",
+            "value": "SOLID Principles are must to have"
+          },
+          {
+            "module": "image",
+            "value": "./assets/articles/solid.jpg"
+          }
+        ]
+     }
+  }
+}
