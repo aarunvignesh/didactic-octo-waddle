@@ -4,9 +4,9 @@
     {
       "title": "Solid Principles",
       "description": "Standards must to follow when you code.",
-      "image_src": "./blog/solid-principles",
-      "image": "",
-      "readTime": ""
+      "image_src": "https://img-a.udemycdn.com/course/750x422/1236992_0e20_5.jpg",
+      "href": "./blog/solid-principles",
+      "readTime": "5 minutes"
     }
   ]
 }
