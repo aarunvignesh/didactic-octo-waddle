@@ -4,7 +4,7 @@
     {
       "title": "Solid Principles",
       "description": "Standards must to follow when you code.",
-      "image_src": "https://img-a.udemycdn.com/course/750x422/1236992_0e20_5.jpg",
+      "image_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs_home/solid.jpg",
       "href": "./blog/solid-principles",
       "readTime": "5 minutes"
     }
