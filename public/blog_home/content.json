@@ -1,0 +1,11 @@
+{
+  "cards": [
+    {
+      "title": "Solid Principles",
+      "description": "Standards must to follow when you code.",
+      "href": "./blog/solid-principles",
+      "image": "",
+      "readTime": ""
+    }
+  ]
+}
