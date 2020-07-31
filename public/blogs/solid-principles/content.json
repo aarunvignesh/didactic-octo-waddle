@@ -58,6 +58,10 @@
           "value": "The strongest principle to remember by following this you can eliminate most of the problems"
         },
         {
+          "module": "inner_sub_heading",
+          "value": "Open / Close Principle:"
+        },
+        {
           "module": "image_and_text",
           "align_image": "right",
           "img_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/solid-principles/o.png",
