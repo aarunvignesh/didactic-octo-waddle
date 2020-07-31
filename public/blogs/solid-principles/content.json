@@ -22,17 +22,46 @@
         {
           "module": "paragraph",
           "align": "justify",
-          "value": "Every programmer will have different perspectives on a problem. So everyone can bring a solution. But that would be successful when it has three major qualities: <br/><ul><li>Solution should be simple and clear to use it</li><li>Code should be easy to accommodate changes</li><li>Solution can be broken as unit as possible so if needed it can be coupled to other solutions</li></ul>"
+          "value": "Every programmer will have different perspectives on a problem. So everyone can bring a solution. But that would be successful when it has three major qualities: <br/><ul><li>Solution should be simple and clear to use it</li><li>Code should be easy to accommodate changes</li><li>Solution can be broken as unit as possible so if needed it can be reused</li></ul>"
         },
         {
           "module": "paragraph",
           "align": "justify",
-          "value": "When we are having this in mind, We can code in such a way that it can be readable for everyone not only to the compilers. So we have to make it easy to read and implement."
+          "value": "When we are having this in mind, We can code in such a way that it can be readable for everyone not only to the compilers. So we have to make it easy to read and implement.We can start with an example. Consider a function to get account balance from database."
+        },
+        {
+          "module": "image",
+          "value": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/solid-principles/image4.png"
         },
         {
           "module": "paragraph",
           "align": "justify",
-          "value": "We can start with an example. Consider a function to get account balance from database"
+          "value": "So the above code satisfies your problem but it is not friendly to understand. This is like a <b>magic function</b>. It starts from creating Database connection, getting the user object with userId &nbsp;and from the user's accountId it fetches all account details from that it gives the account balance. So this function takes multiple responsibilities and it handles data that is irrelevant to it. also if a change comes in it's very difficult to accommodate it. To overcome this we have to follow some principles."
+        },
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "<ul><li><b>S</b>ingle Responsibility Principle</li><li><b>O</b>pen / Close Principle</li><li><b>L</b>iskov Substitution Principle</li><li><b>I</b>nterface Segregation Principle</li><li><b>D</b>ependency Inversion Principle</li></ul>"
+        },
+        {
+          "module": "inner_sub_heading",
+          "value": "Single Responsibility Principle:"
+        },
+        {
+          "module": "image_and_text",
+          "align_image": "left",
+          "img_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/solid-principles/S.png",
+          "value": "This is the key principle to follow. So as the example we gave above lacks single responsibility since it takes care of DB Connection, Querying the User and fetching account details from it and returning account balance.  As it is having irrelevant code we are dumping more responsibility to this code. <br/> <p>As per my view, If we have this SRP in mind most of the problems cannot occur. Function  having single responsibility will be a unit so this can be reused wherever it is necessary. So while reusing you will be eliminating the duplicate codes.  <b>DRY - Don't Repeat Yourself</b> - if we didn’t follow then it ends up with <b>WET - Write Everything Twice</b>. So as we are breaking as a unit as possible you will be capable of avoiding too much nested for loops and callbacks. By following this your code becomes simple and clear to read and easy to understand.</p>"
+        },
+        {
+          "module": "quotation",
+          "value": "The strongest principle to remember by following this you can eliminate most of the problems"
+        },
+        {
+          "module": "image_and_text",
+          "align_image": "right",
+          "img_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/solid-principles/o.png",
+          "value": "<p>Expect the unexpected. Being in Agile you can get frequent changes for your solution so your code should open to extend and close to modification. For understanding, using a config file is like implementing this standard. So when you change your config your code reacts to that automatically but we can’t change the flow of code from the config. So the config file is open to change but it cannot change the flow so it is closed to modify.</p><br/><p>So while following SRP you would write as units. Having this in mind your unit can accept the change. A small change can bring a drastic change. Interface comes into picture for example. Consider you are having different payment methods in your application and the client wants to bring a new payment method then it will be like adding a payment method as well as a change in payment handling techniques. So to overcome this:</p>"
         },
         {
           "module": "image",
@@ -41,25 +70,74 @@
         {
           "module": "paragraph",
           "align": "justify",
-          "value": "So the above code satisfies your problem but it is not friendly to understand. This is like a <b>magic function</b>. It starts from creating Database connection, getting the user object with userId &nbsp;and from the user's accountId it fetches all account details from that it gives the account balance. So this function takes multiple responsibilities and it handles data that is irrelevant to it. also if a change comes in it's very difficult to accommodate it. To overcome this we have to follow some principles."
+          "value": "Here the work will be only for adding a payment method but no change in payment handling part since that will use Interface. so now it is open to change and close to modify."
+        },
+        {
+          "module": "inner_sub_heading",
+          "value": "Liskov Substitution Principle:"
         },
         {
           "module": "image_and_text",
           "align_image": "left",
-          "img_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/solid-principles/5.jpg",
-          "value": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham."
-        },
-        {
-          "module": "image_and_text",
-          "align_image": "right",
-          "img_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/solid-principles/5.jpg",
-          "value": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham."
-        },
-        {
-          "module": "paragraph",
-          "align": "center",
-          "value": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham."
-        }
+          "img_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/solid-principles/L.png",
+          "value": "<p>This principle is very important while implementing method overriding because An overridden method of a subclass needs to accept the same input parameter values as the method of the superclass. That means you can implement less restrictive validation rules, but you are not allowed to enforce stricter ones in your subclass. Otherwise, any code that calls this method on an object of the superclass might cause an exception, if it gets called with an object of the subclass. Similarly the return value of a method in a subclass needs to comply with the same rules as the return value of the method in superclass.</p>"
+		},
+		{
+			"module": "quotation",
+			"value": "Unfortunately, there is no easy way to enforce this principle."
+		},
+		{
+			"module": "paragraph",
+			"align": "justify",
+			"value": "You need to implement your own checks to ensure that your code follows the Liskov Substitution Principle via test cases. In your test cases, you can execute a specific part of your application with objects of all subclasses to make sure that none of them causes an error or significantly changes its performance. "
+		  },
+		  {
+			"module": "inner_sub_heading",
+			"value": "Interface Segregation Principle:"
+		  }, 
+		  {
+			"module": "image_and_text",
+			"align_image": "right",
+			"img_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/solid-principles/I.png",
+			"value": "<p>This principle is very important while implementing method overriding because An overridden method of a subclass needs to accept the same input parameter values as the method of the superclass. That means you can implement less restrictive validation rules, but you are not allowed to enforce stricter ones in your subclass. Otherwise, any code that calls this method on an object of the superclass might cause an exception, if it gets called with an object of the subclass. Similarly the return value of a method in a subclass needs to comply with the same rules as the return value of the method in superclass.</p>"
+		  },
+		  {
+			"module": "image",
+			"value": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/solid-principles/image3.png"
+		  }, 
+		  {
+			"module": "paragraph",
+			"align": "justify",
+			"value": "In the above example you can see that scanQRCode function is irrelevant to Credit Card so unwanted implementation and throwing error while calling it. So here this scanQRCode can be moved to a new interface and so that can be implemented only where the method needed."
+		  },
+
+		  {
+			"module": "inner_sub_heading",
+			"value": "Dependency Inversion Principle:"
+		  }, 
+		  {
+			"module": "image_and_text",
+			"align_image": "left",
+			"img_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/solid-principles/D.png",
+			"value": "<p>DIP should be considered while integrating with any other class or module to provide a complex solution. In simple, High-level modules, which provide complex logic, should be easily reusable and unaffected by changes in low-level modules, which provide utility features. To achieve that, you need to introduce an abstraction that decouples the high-level and low-level modules from each other.</p><p>Abstraction of interface between higher-level and lower-level software components are used to remove the dependencies between them. For example we are using 3 tier architecture, In this Business Layer and Data Layer is tightly coupled since if a request comes in then from the business layer we communicate with Database with a Datalayer instance. So this is tightly coupled and it will be in danger if there is a change in Data Layer. So using interfaces between them as abstraction makes it loosely coupled hence whichever Data Layer object implements the abstract interface can play with Business Layer.</p>"
+		  },
+		  {
+			"module": "image",
+			"value": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/solid-principles/image2.png"
+		  },
+		  {
+			"module": "paragraph",
+			"align": "justify",
+			"value": "This is the high level glance of coding standards still lot more to cover…"
+		  },
+		  {
+			"module": "break"
+		  }
+		  {
+			"module": "paragraph",
+			"align": "center",
+			"value": "Happy Coding!!!"
+		  }
       ]
     }
   }
