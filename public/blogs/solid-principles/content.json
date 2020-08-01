@@ -22,7 +22,7 @@
         {
           "module": "paragraph",
           "align": "justify",
-          "value": "Every programmer will have different perspectives on a problem. So everyone can bring a solution. But that would be successful when it has three major qualities: <br/><ul><li>Solution should be simple and clear to use it</li><li>Code should be easy to accommodate changes</li><li>Solution can be broken as unit as possible so if needed it can be reused</li></ul>"
+          "value": "Every programmer will have different perspectives on a problem. So everyone can bring a solution. But that would be successful when it has three major qualities: <br/><ul><li>It should be simple and clear to use.</li><li>It should be easy to accommodate changes.</li><li>Solution can be broken as unit as possible so if needed it can be reused</li></ul>"
         },
         {
           "module": "paragraph",
