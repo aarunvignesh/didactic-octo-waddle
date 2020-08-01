@@ -106,6 +106,9 @@
           "value": "<p>This principle is very important while implementing method overriding because An overridden method of a subclass needs to accept the same input parameter values as the method of the superclass. That means you can implement less restrictive validation rules, but you are not allowed to enforce stricter ones in your subclass. Otherwise, any code that calls this method on an object of the superclass might cause an exception, if it gets called with an object of the subclass. Similarly the return value of a method in a subclass needs to comply with the same rules as the return value of the method in superclass.</p>"
         },
         {
+          "module": "break"
+        },
+        {
           "module": "image",
           "value": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/solid-principles/image3.png"
         },
