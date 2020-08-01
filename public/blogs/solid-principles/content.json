@@ -21,12 +21,12 @@
         {
           "module": "paragraph",
           "align": "justify",
-          "value": "Every programmer will have different perspectives on a problem. So everyone can bring a solution. But that would be successful when it has three major qualities: <br/><ul><li>It should be simple and clear to use.</li><li>It should be easy to accommodate changes.</li><li>Solution can be broken as unit as possible so if needed it can be reused</li></ul>"
+          "value": "Every programmer will have different perspectives on a problem. So everyone can bring their own way of solution. But that would be successful only when it has following qualities: <br/><ul><li>It is simple and clear to use.</li><li>It is easy to accommodate changes.</li><li>It can be divided to lower level units so that it will be more reusable</li></ul>"
         },
         {
           "module": "paragraph",
           "align": "justify",
-          "value": "When we are having this in mind, We can code in such a way that it can be readable for everyone not only to the compilers. So we have to make it easy to read and implement.We can start with an example. Consider a function to get account balance from database."
+          "value": "Having this in mind, code in such a way that, it can be readable for everyone not only to the compilers. We can start with an example. Consider a function to get account balance from database."
         },
         {
           "module": "image",
@@ -35,7 +35,7 @@
         {
           "module": "paragraph",
           "align": "justify",
-          "value": "So the above code satisfies your problem but it is not friendly to understand. This is like a <b>magic function</b>. It starts from creating Database connection, getting the user object with userId &nbsp;and from the user's accountId it fetches all account details from that it gives the account balance. So this function takes multiple responsibilities and it handles data that is irrelevant to it. also if a change comes in it's very difficult to accommodate it. To overcome this we have to follow some principles."
+          "value": "So the above code satisfies your problem but it is not friendly to understand. This is like a <b>magic function</b>. It starts from creating Database connection, getting the user object with userId &nbsp;and from the user's accountId it fetches all account details from that it gives the account balance. So this function takes multiple responsibilities and it handles data that is irrelevant to it. Also if a change comes in, it's very difficult to accommodate it. To overcome this we have to follow some principles."
         },
         {
           "module": "paragraph",
@@ -50,11 +50,11 @@
           "module": "image_and_text",
           "align_image": "left",
           "img_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/solid-principles/S.png",
-          "value": "<p>This is the key principle to follow. So as the example we gave above lacks single responsibility since it takes care of DB Connection, Querying the User and fetching account details from it and returning account balance.  As it is having irrelevant code we are dumping more responsibility to this code. <br/> <p>As per my view, If we have this SRP in mind most of the problems will not occur. Function  having single responsibility will be a unit so this can be reused wherever it is necessary. So while reusing you will be eliminating the duplicate codes.  <b>DRY - Don't Repeat Yourself</b> - if we didn’t follow then it ends up with <b>WET - Write Everything Twice</b>. So as we are breaking as a unit as possible you will be capable of avoiding too much nested for loops and callbacks. By following this your code becomes simple and clear to read and easy to understand.</p></p>"
+          "value": "<p>This is one of the key principle to follow. So as the example we gave above, it lacks single responsibility since same function takes care of DB Connection, Querying the User and fetching account details from it and returning account balance.  As it is having irrelevant code we are dumping more responsibility to this code. <br/> <p>As per my view, If we have this Single Responsiblity Principle in mind most of the problems will not occur. Function having single responsibility will be a unit so this can be reused wherever it is necessary. So while reusing you will be eliminating the duplicate codes.  <b>DRY - Don't Repeat Yourself</b> - if we didn’t follow then it ends up with <b>WET - Write Everything Twice</b>. As we are breaking the code as a unit as possible, we will avoid too much nested loops or callbacks. By following this your code becomes simple and clear to read and easy to understand.</p></p>"
         },
         {
           "module": "quotation",
-          "value": "The strongest principle to remember by following this you can eliminate most of the problems"
+          "value": "The strongest principle that can eliminate most of the problems"
         },
         {
           "module": "inner_sub_heading",
@@ -64,7 +64,7 @@
           "module": "image_and_text",
           "align_image": "right",
           "img_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/solid-principles/o.png",
-          "value": "<p>Expect the unexpected. Being in Agile you can get frequent changes for your solution so your code should open to extend and close to modification. For understanding, using a config file is like implementing this standard. So when you change your config your code reacts to that automatically but we can’t change the flow of code from the config. So the config file is open to change but it cannot change the flow so it is closed to modify.<br/><p>So while following SRP you would write as units. Having this in mind your unit can accept the change. A small change can bring a drastic change. Interface comes into picture for example. Consider you are having different payment methods in your application and the client wants to bring a new payment method then it will be like adding a payment method as well as a change in payment handling techniques. So to overcome this:</p></p>"
+          "value": "<p>Expect the unexpected. Being in Agile you can get frequent changes for your solution so your code should open to extend and close for modification. In my view, using a config file is example of following this principle. So when you change your config your code reacts to that automatically but we can’t change the flow from the config. So the config file is open to change but it cannot change the code flow so it is closed to modify.<br/><p>So while following SRP you would write as units. Having this in mind, your each unit can accept the change. So a small change in a unit can bring a drastic change.</p> <p>Coming to OOPs, Interface plays a major role. Consider you are having different payment methods in your application and the client wants to bring a new payment method then it will be like adding a payment method as well as a change in payment handling techniques. So to overcome this:</p></p>"
         },
         {
           "module": "image",
@@ -73,7 +73,7 @@
         {
           "module": "paragraph",
           "align": "justify",
-          "value": "Here the work will be only for adding a payment method but no change in payment handling part since that will use Interface. so now it is open to change and close to modify."
+          "value": "Here the work will be only for adding a payment method but no change in payment handling part since that will use paymentMethod Interface. so now it is open to change and close to modify."
         },
         {
           "module": "inner_sub_heading",
