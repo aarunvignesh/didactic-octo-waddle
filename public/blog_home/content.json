@@ -3,7 +3,7 @@
   "cards": [
     {
       "title": "SOLID thing to remember before you code!",
-      "description": "Standards must to follow while you code.",
+      "description": "Standards to follow while you code.",
       "image_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blog_home/solid.jpg",
       "href": "./blog/solid-principles",
       "readTime": "5 minutes"
