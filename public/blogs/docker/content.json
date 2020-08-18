@@ -45,7 +45,7 @@
         {
           "module": "paragraph",
           "align": "justify",
-          "value": "<b>Images<b> - Images are like compiled code where it generates a build template of container<br/><span class=\"code\">docker build . -t sniper:1.0</span><br/><b>Container</b>- Runs a virtual system using an image.<br/><span class=\"code\">docker run --name sniper sniper:1.0</span>"
+          "value": "<b>Images</b> - Images are like compiled code where it generates a build template of container<br/><span class=\"code\">docker build . -t sniper:1.0</span><br/><b>Container</b>- Runs a virtual system using an image.<br/><span class=\"code\">docker run --name sniper sniper:1.0</span>"
         },
         {
           "module": "inner_sub_heading",
