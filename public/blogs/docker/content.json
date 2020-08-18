@@ -15,23 +15,23 @@
       "author": "Arun Vignesh A",
       "content": [
         {
-          "module": "paragraph",
-          "align": "justify",
-          "value": "This pandemic situation has taught us the importance of isolation. The same situation applies to our applications too. If we handle applications as a group there is a threat that because of anyone the whole group can suffer. So to avoid this, isolate them."
-        },
-        {
           "module": "inner_sub_heading",
           "value": "Maintain Social Distance using Docker"
         },
         {
           "module": "paragraph",
           "align": "justify",
-          "value": "Docker helps in isolating your application within a virtual system. It is like bundling the dependencies as well as the running environment. It can also Infrastructure environment as code."
+          "value": "This pandemic situation has taught us the importance of isolation. So we gonna follow the same to our applications. Handling applications as a group has a threat, because of any one the whole group can suffer. i.e If any one application eats up memory or CPU usage then whole server goes down. To avoid this, isolate them."
         },
         {
           "module": "paragraph",
           "align": "justify",
-          "value": "Docker is more popular among OCI (Open Container Initiative). It is popular because of portability, we can push our images to the Docker hub registry and pull it anywhere.  runc and Containerd are similar technologies."
+          "value": "Docker helps in isolating your application within a virtual system. It is like bundling the dependencies as well as the running environment. It can also be like Environment as code."
+        },
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "Docker is more popular among OCI (Open Container Initiative). It is popular because of portability, we can push our images to the Docker hub registry and pull it anywhere. runc and containerd are similar technologies. we are conecentrating on Docker"
         },
         {
           "module": "image",
@@ -40,7 +40,7 @@
         {
           "module": "paragraph",
           "align": "justify",
-          "value": "These are the three major blocks in architecture. Docker CLI communicates with the daemon and daemon takes care of creating images and containers. Registry where we push the images consider it like a git repository from there you can pull anywhere. Also they have good documentation. In Docker CLI, mostly we use two basic commands for build and run. Build command is used to construct images and Run is used to spawn containers from the image. Push command is similar to git push, pushing images to the registry."
+          "value": "These are the three major blocks in architecture. Docker CLI communicates with the daemon and it takes care of creating images and containers. Registry where we push the images consider it like a git repository from there you can pull anywhere. Also they have good documentation. In Docker CLI, mostly we use two basic commands they are build and run. Build command is used to construct images and Run is used to spawn containers from the image. Push command is similar to git push, pushing images to the registry."
         },
         {
           "module": "paragraph",
