@@ -7,6 +7,13 @@
       "image_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blog_home/solid.jpg",
       "href": "./blog/solid-principles",
       "readTime": "5 minutes"
+    },
+    {
+      "title": "Self Quarantine for your Applications!",
+      "description": "Learn basics of Docker.",
+      "image_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/docker/docker_home.jpg",
+      "href": "./blog/solid-principles",
+      "readTime": "5 minutes"
     }
   ]
 }
