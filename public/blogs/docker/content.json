@@ -1,0 +1,123 @@
+{
+  "head": {
+    "title": "Self Quarantine your applications!",
+    "og_title": "Self Quarantine your applications!",
+    "image": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/docker/docker_home.jpg",
+    "author_name": "Arun Vignesh",
+    "date": "18-08-2020",
+    "page_url": "https://arun-tech-blogs.herokuapp.com/blog/docker",
+    "page_id": "1596211695992",
+    "readTime": "5 minutes"
+  },
+  "body": {
+    "blog": {
+      "heading": "Self Quarantine your applications!",
+      "author": "Arun Vignesh A",
+      "content": [
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "This pandemic situation has taught us the importance of isolation. The same situation applies to our applications too. If we handle applications as a group there is a threat that because of anyone the whole group can suffer. So to avoid this, isolate them."
+        },
+        {
+          "module": "inner_sub_heading",
+          "value": "Maintain Social Distance using Docker"
+        },
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "Docker helps in isolating your application within a virtual system. It is like bundling the dependencies as well as the running environment. It can also Infrastructure environment as code."
+        },
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "Docker is more popular among OCI (Open Container Initiative). It is popular because of portability, we can push our images to the Docker hub registry and pull it anywhere.  runc and Containerd are similar technologies."
+        },
+        {
+          "module": "image",
+          "value": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/docker/docker-architecture.png"
+        },
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "These are the three major blocks in architecture. Docker CLI communicates with the daemon and daemon takes care of creating images and containers. Registry where we push the images consider it like a git repository from there you can pull anywhere. Also they have good documentation. In Docker CLI, mostly we use two basic commands for build and run. Build command is used to construct images and Run is used to spawn containers from the image. Push command is similar to git push, pushing images to the registry."
+        },
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "<b>Images<b> - Images are like compiled code where it generates a build template of container<br/><span class=\"code\">docker build . -t sniper:1.0</span><br/><b>Container</b>- Runs a virtual system using an image.<br/><span class=\"code\">docker run --name sniper sniper:1.0</span>"
+        },
+        {
+          "module": "inner_sub_heading",
+          "value": "What is in Dockerfile?"
+        },
+        {
+          "module": "image",
+          "value": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/docker/dockerfile.jpg"
+        },
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "Docker Build command searches for a file name with “Dockerfile”  or you can override it with -f parameter.<br/>Syntax to write a Dockerfile:<br/>FROM where we will mention the base image. <br/>ENV used to declare the environment variables<br/>ADD and COPY used to move files from host to target docker. ADD and COPY seem to be similar but ADD comes with advantages like pull any file from any HTTP URL. <br/>RUN is used to execute any command while creating an image. Usually, this is used to install dependencies.<br/>EXPOSE used for documenting the port numbers so by seeing this file people can know on which port the application is running<br/>CMD and ENTRYPOINT - This is executed only during the time of container creation and the command given here will be the key process of the container. If it is killed, the container will be terminated. They both look the same but the difference is CMD command can be overridden from the command while we give to create containers and while ENTRYPOINT can’t be ignored and parameters cannot be overridden. Sometimes we can use both where entrypoint carries executable command and cmd carries arguments so that argument can be overridden while creating the container.<br/>RUN, CMD, ENTRYPOINT use Exec or Shell way to pass commands.  If using exec we can directly pass our command like “RUN apt-get update” so this will be translated to “/bin/sh -c apt-get update” this is useful when you need variable substitution like “Run nvm use $version” then you can pass the command to executable if not needed then give like RUN [“apt-get”,”update”]"
+        },
+        {
+          "module": "inner_sub_heading",
+          "value": "Containers are persistent?"
+        },
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "Containers do not offer persistence, it is fresh on every restart so for providing persistent data we can attach the volume to a container. Containers can attach Docker volume or mount a folder to a container. Mount a folder option is very much useful during the development, we can mount the src folder so the code changes will be synced to the container. Docker volume is specifically to docker that can be created using docker commands."
+        },
+
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "“docker volume create html”<br/>“docker run --name sniper -v html:/app sniper:1.0” - This attaches docker volume to /app directory in container<br/>“docker run --name sniper -v ./src:/app sniper:1.0” - This mounts the src directory into app directory of container<br/>“docker run --name sniper -v ./src:/app:ro sniper:1.0” - Adding ro in volume binds volume in read only mode"
+        },
+        {
+          "module": "inner_sub_heading",
+          "value": "How they Communicate?"
+        },
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "Communication among containers is the most important one. Dockers can create networks so containers that need communication can be placed in the same network. Docker offers 4 types of network drivers:<ul><li><b>Bridge Network:</b> The Most used and default network method is the bridge network. Where we can link the containers and can be accessed via names of containers.</li><li><b>Overlay Network:</b> This network is used to connect among multiple docker daemons. This network sits on the master daemon.  This is mainly used in Docker Swarm</li><li><b>Host Network:</b> Containers won’t get dedicated IP and it directly listens to the hosted machine. Consider your application is running on 80 inside the container, where it can directly access from the host IP address. It doesn’t need NAT. It works only on Linux hosts. Docker desktop doesn’t support this.</li><li><b>Macvlan Network:</b> This is mostly used in legacy systems where docker is assigned with mac address and directly attached to the physical network with gateway and subnet IP.</li></ul>"
+        },
+        {
+          "module": "inner_sub_heading",
+          "value": "Best practices"
+        },
+        {
+          "module": "image_and_text",
+          "align_image": "left",
+          "img_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/docker/best-practice.png",
+          "value": "<b>Ordering</b> the statement is important to follow while development. Since docker caches each layer and when code layer changes next layer on installing dependencies are also done fresh. so ordering effectively will save time and data."
+        },
+        {
+          "module": "image_and_text",
+          "align_image": "right",
+          "img_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/docker/size_comparison.png",
+          "value": "<b>Multistage build</b> is a very important method to follow. The final image to production should be precise and less in size so that if you are applying autoscale then spin up time to spawn new containers will be less. Production ready images for go applications don't need source code and libraries. So Docker gives a way to incorporate more than one base image and so once the build is completed the target file can be moved to a small image so the final image size would be less. Most common example is GO applications dont need GO libraries after compiling they can directly run on linux. So the compile time image may be 800MB after compile it can run linux alpine image where this image size is just 13MB.<br/>This example image is a small spring boot application, for taking the build of it we are using openjdk8 base image. Using the same as the final image, the output image size is about 800 MB. <br/> Hence we are adding alpine as a second base image with java and moving only the final jar build to this image. So the final image size is about 100MB now the size is reduced 7 times."
+        },
+        {
+          "module": "image",
+          "value": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/docker/code_block.png"
+        },
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "This is the high level glance of coding standards still lot more to cover…"
+        },
+        {
+          "module": "break"
+        },
+        {
+          "module": "paragraph",
+          "align": "center",
+          "value": "Happy Coding!!!"
+        }
+      ]
+    }
+  }
+}
