@@ -73,7 +73,7 @@
         {
           "module": "paragraph",
           "align": "justify",
-          "value": "<span class=\"code\">docker volume create html”</span><br/><br/><span class=\"code\">docker run --name sniper -v html:/app sniper:1.0</span> - This attaches docker volume to /app directory in container<br/><br/><span class=\"code\">docker run --name sniper -v ./src:/app sniper:1.0</span> - This mounts the src directory into app directory of container<br/><br/><span class=\"code\">docker run --name sniper -v ./src:/app:ro sniper:1.0</span> - Adding ro in volume binds volume in read only mode"
+          "value": "<span class=\"code\">docker volume create html</span><br/><br/><span class=\"code\">docker run --name sniper -v html:/app sniper:1.0</span> - This attaches docker volume to /app directory in container<br/><br/><span class=\"code\">docker run --name sniper -v ./src:/app sniper:1.0</span> - This mounts the src directory into app directory of container<br/><br/><span class=\"code\">docker run --name sniper -v ./src:/app:ro sniper:1.0</span> - Adding ro in volume binds volume in read only mode"
         },
         {
           "module": "inner_sub_heading",
