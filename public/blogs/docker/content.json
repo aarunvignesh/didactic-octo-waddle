@@ -2,6 +2,7 @@
   "head": {
     "title": "Self Quarantine for your Applications!",
     "og_title": "Self Quarantine for your Applications!",
+    "description": "Standards to follow while you code.",
     "image": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/docker/docker_home.jpg",
     "author_name": "Arun Vignesh",
     "date": "18-08-2020",
