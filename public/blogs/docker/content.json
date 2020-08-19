@@ -45,7 +45,7 @@
         {
           "module": "paragraph",
           "align": "justify",
-          "value": "<b>Images</b> - Images are like compiled code where it generates a template of container<br/><br/><span class=\"code\">docker build . -t <app-name>:<tag></span><br/><br/><b>Container</b>- Runs a virtual system using an image.<br/><br/><span class=\"code\">docker run --name <container-name> <image-name>:<tag></span>"
+          "value": "<b>Images</b> - Images are like compiled code where it generates a template of container<br/><br/><span class=\"code\">docker build . -t app-name:tag</span><br/><br/><b>Container</b>- Runs a virtual system using an image.<br/><br/><span class=\"code\">docker run --name container-name image-name:tag</span>"
         },
         {
           "module": "inner_sub_heading",
@@ -73,7 +73,7 @@
         {
           "module": "paragraph",
           "align": "justify",
-          "value": "“docker volume create html”<br/><br/>“docker run --name sniper -v html:/app sniper:1.0” - This attaches docker volume to /app directory in container<br/><br/>“docker run --name sniper -v ./src:/app sniper:1.0” - This mounts the src directory into app directory of container<br/><br/>“docker run --name sniper -v ./src:/app:ro sniper:1.0” - Adding ro in volume binds volume in read only mode"
+          "value": "<span class=\"code\">docker volume create html”</span><br/><br/><span class=\"code\">docker run --name sniper -v html:/app sniper:1.0</span> - This attaches docker volume to /app directory in container<br/><br/><span class=\"code\">docker run --name sniper -v ./src:/app sniper:1.0</span> - This mounts the src directory into app directory of container<br/><br/><span class=\"code\">docker run --name sniper -v ./src:/app:ro sniper:1.0</span> - Adding ro in volume binds volume in read only mode"
         },
         {
           "module": "inner_sub_heading",
@@ -98,7 +98,7 @@
           "module": "image_and_text",
           "align_image": "right",
           "img_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/docker/size_comparison.png",
-          "value": "<b>Multistage build</b> is a very important method to follow. The final image to production should be precise and less in size so that if you are applying autoscale then spin up time to spawn new containers will be less. Production ready images for go applications don't need source code and libraries. So Docker gives a way to incorporate more than one base image and so once the build is completed the target file can be moved to a small image so the final image size would be less. Most common example is GO applications dont need GO libraries after compiling they can directly run on linux. So the compile time image may be 800MB after compile it can run linux alpine image where this image size is just 13MB.<br/><br/>This example image is a small spring boot application, for taking the build of it we are using openjdk8 base image. Using the same as the final image, the output image size is about 800 MB. <br/><br/> Hence we are adding alpine as a second base image with java and moving only the final jar build to this image. So the final image size is about 100MB now the size is reduced 7 times."
+          "value": "<b>Multistage build</b> is a very important method to follow. The final image to production should be precise and less in size so that if you are applying autoscale then spin up time to spawn new containers will be less. Production ready images for go applications don't need source code and libraries. So Docker gives a way to incorporate more than one base image and so once the build is completed the target file can be moved to a small image so the final image size would be less. Most common example is GO applications dont need GO libraries after compiling they can directly run on linux. So the compile time image may be 800MB after compile it can run linux alpine image where this image size is just 13MB.<br/><br/>This example is a small spring boot application called sniper, for taking the build of it we are using openjdk8 base image. Using the same as the final image for version 0.1, the output image size is about 758.89 MB. <br/><br/> Hence we are adding alpine as a second base image with java and moving only the final jar build to the image version 1.0. So the final image size is about 89.89MB now the size is reduced drastically."
         },
         {
           "module": "break"
