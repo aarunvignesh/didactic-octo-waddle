@@ -41,8 +41,8 @@
           {
             "module": "image_and_text",
             "align_image": "left",
-            "image_src":"https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/podman/bash.jpeg",
-            "value": "<h3>Steps to install Podman</h3><ul><li><span class='code'>brew install podman</span></li><li><span class='code'>podman machine init</span></li><li><span class='code'>podman machine start</span></li><li><span class='code'> echo \"alias docker=podman\" >> .bashrc </span></li><li>Now you can start using the same docker commands.</li></ul>"
+            "img_src":"https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/podman/bash.jpeg",
+            "value": "<h3>Steps to install Podman</h3><ul><li><span class='code'>brew install podman</span></li><br><li><span class='code'>podman machine init</span></li><br><li><span class='code'>podman machine start</span></li><br><li><span class='code'> echo \"alias docker=podman\" >> .bashrc </span></li><br><li>Now you can start using the same docker commands.</li><br></ul>"
           }
         ]
       }
