@@ -14,6 +14,14 @@
       "image_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/docker/docker_home.jpg",
       "href": "./blog/docker",
       "readTime": "5 minutes"
+    },
+    {
+      "title": "Alternatives for Docker",
+      "description": "Docker vs Podman vs Skopeo",
+      "image_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/podman/pod.png",
+      "href": "./blog/podman",
+      "readTime": "5 minutes"
     }
+
   ]
 }

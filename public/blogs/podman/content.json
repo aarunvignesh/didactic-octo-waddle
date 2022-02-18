@@ -1,0 +1,49 @@
+{
+    "head": {
+      "title": "Docker vs Podman",
+      "og_title": "Docker vs Podman",
+      "description": "Time to think for Docker alternatives since it becomes paid for large enterprises ",
+      "image": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/podman/pod.png",
+      "author_name": "Arun Vignesh",
+      "date": "18-02-2022",
+      "page_url": "https://arun-tech-blogs.herokuapp.com/blog/podman",
+      "page_id": "15977723812890",
+      "readTime": "5 minutes"
+    },
+    "body": {
+      "blog": {
+        "heading": "Docker vs Podman",
+        "author": "Arun Vignesh A",
+        "content": [
+          {
+            "module": "inner_sub_heading",
+            "value": "Why we need to think out of docker?"
+          },
+          {
+            "module": "paragraph",
+            "align": "justify",
+            "value": "Docker becomes paid subscription for large enterprise that has more than 250 employees or $10 million in revenue, starting at $5 per user per month. It is important to notice that <b> Docker Desktop remains free for personal use </b>, educational institutions, non-commercial open-source projects, and small businesses under the new Docker Personal plan, which replaces the previous Docker Free."
+          },
+          {
+            "module": "paragraph",
+            "align": "justify",
+            "value": "The other reasons to think out of docker is, Docker daemon is a single process that run forever and that takes care of image and container management. Docker CLI helps to ineract with Docker daemon. To lis a few cons of this model:  <ul><li>A single process could be a single point of failure.</li><li>This process will take care of spawning child processes (containers).</li><li>If failed, then there are orphaned processes.</li><li>Building containers led to security vulnerabilities.</li><li>All Docker operations had to be conducted by a user (or users) with the same full root authority.</li></ul>"
+          },
+          {
+            "module": "inner_sub_heading",
+            "value": "So, any other alternatives?"
+          },
+          {
+            "module": "paragraph",
+            "align": "justify",
+            "value": "You can find lot of popular alternatives like Podman, Buildah and Skopeo. Each are having own advantages, but here we will start with the advantages to choose Podman. <ul><li>You can install Podman instead of Docker. You do not need to start or manage a daemon process like the Docker daemon.</li><li>The commands you are familiar with in Docker work the same for Podman.</li><li>Podman stores its containers and images in a different place than Docker.</li><li>Podman and Docker images are compatible.</li><li>Podman does more than Docker for Kubernetes environments.</li></ul>"
+          },
+          {
+            "module": "image",
+            "value": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/podman/bash.jpeg"
+          }
+        ]
+      }
+    }
+  }
+  
