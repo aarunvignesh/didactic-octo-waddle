@@ -16,8 +16,8 @@
       "readTime": "5 minutes"
     },
     {
-      "title": "Alternatives for Docker",
-      "description": "Docker vs Podman vs Skopeo",
+      "title": "Docker vs Podman",
+      "description": "Thinking out of Docker",
       "image_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/podman/pod.png",
       "href": "./blog/podman",
       "readTime": "5 minutes"
