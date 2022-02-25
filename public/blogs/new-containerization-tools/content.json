@@ -37,14 +37,23 @@
           {
             "module": "paragraph",
             "align": "justify",
-            "value": "Yes, we have alternatives that have rectified most of these issues. Build an image with Buildah, run a container with Podman & move images with Skopeo. All these tools wont run without Daemon in background. <ul><li><b>Buildah</b> is a lightweight tool that builds the images with OCI satndards without a daemon. It can pull images from Docker registry or <a href='https://quay.io/'>Quay.io</a> or any custom registry. You can use shell script or Dockerfile to build the images. </li><li><b>Podman</b> comes to run the image as containers and the same one, you do not need daemon process to start or manage a container. The commands you are familiar with in Docker work the same for Podman even u can change alias docker=podman in your system. You wont feel the difference. Podman uses Buildah on behind to create and pull the images.Podman gives more support with Kubernetes than Docker.</li><li><b>Skopeo</b> is a command line utility that performs various operations on container images and image repositories and it can work with OCI images as well as the original Docker v2 images. This is the backend for Podman, CRI-O, Buildah and friends</li></ul> <br/> Since Podman touches all we can dig deeper with Podman <br/>"
+            "value": "Yes, we have alternatives that have rectified most of these issues. Build an image with Buildah, run a container with Podman & move images with Skopeo. Migration from Docker to these tools doesnt need much effort since it can understand Dockerfile and Docker commands ,  and these are done without Daemon in background. <ul><li><b>Buildah</b> is a lightweight tool that builds the images with OCI satndards without a daemon. It can pull images from Docker registry or <a href='https://quay.io/'>Quay.io</a> or any custom registry. You can use shell script or Dockerfile to build the images. </li><li><b>Podman</b> comes to run the image as containers and the same one, you do not need daemon process to start or manage a container. The commands you are familiar with in Docker work the same for Podman even u can change alias docker=podman in your system. You wont feel the difference. Podman uses Buildah on behind to create and pull the images.Podman gives more support with Kubernetes than Docker.</li><li><b>Skopeo</b> is a command line utility that performs various operations on container images and image repositories and it can work with OCI images as well as the original Docker v2 images. This is the backend for Podman, CRI-O, Buildah and friends</li></ul> <br/> Since Podman touches all we can dig deeper with Podman <br/>"
           },
           {
             "module": "image_and_text",
             "align_image": "left",
             "img_src":"https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/new-containerization-tools/bash.jpeg",
-            "value": "<h3>How to migrate from Docker to Podman</h3><ul><li><span class='code'>brew install podman</span></li><br><li><span class='code'>podman machine init</span></li><br><li><span class='code'>podman machine start</span></li><br><li><span class='code'> echo \"alias docker=podman\" >> .bashrc </span></li><br></ul><br>Now you can start using the same docker commands."
-          }
+            "value": "<h3>How to migrate from Docker to Podman</h3><ul><li><span class='code'>brew install podman</span></li><br><li><span class='code'>podman machine init</span></li><br><li><span class='code'>podman machine start</span></li><br><li><span class='code'> echo \"alias docker=podman\" >> .bashrc </span></li><br></ul><br><br><b> Thats'it. Now you can start using the same docker commands.</b>"
+          },
+          {
+            "module": "inner_sub_heading",
+            "value": "Container Orchestration:"
+          },
+          {
+            "module": "paragraph",
+            "align": "justify",
+            "value": "Similar to Docker compose podman has its own Podman compose tool. You can use the same Docker compose file to start all the services. Networks & Volumes specified in compose file are provisioned while running the listed services. You have to install this separate using the following command. <br><br><span class='code'>pip3 install https://github.com/containers/podman-compose/archive/devel.tar.gz</span>"
+          },
         ]
       }
     }
