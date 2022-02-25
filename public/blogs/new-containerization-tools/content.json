@@ -23,12 +23,12 @@
           {
               "module": "paragraph",
               "align": "justify",
-              "value": "When we think about containers Docker comes to mind first but now we have to think of some parallel technologies. Some reasons to think out of Docker:"
+              "value": "When we think about containers, Docker comes to mind first but now it is time to think of some parallel technologies. Main reasons to think out of Docker:"
           },
           {
             "module": "paragraph",
             "align": "justify",
-            "value": "<ul><li><b>Docker Daemon keeps on running</b> -  Docker daemon is a single process that will run forever and that takes care of building image and container management. We are using Docker CLI to interact with Docker daemon. This process will take care of spawning child processes i.e. containers. Because of this, A single process could be a single point of failure.If failed, then there are orphaned processes. To make CRI lighter Kubernetes has removed Docker majorly because of this.</li><li>Docker becomes a paid subscription for a large enterprise that has more than 250 employees or $10 million in revenue, starting at $5 per user per month. It is important to note that <b> Docker Desktop remains free for personal use, educational institutions, non-commercial open-source projects, and small businesses under the new Docker Personal plan</b>.</li><ul>"
+            "value": "<ul><li><b>Docker Daemon keeps on running</b> -  Docker daemon is a single process that will run forever and that takes care of building image and container management. We are using Docker CLI to interact with Docker daemon. This process will take care of spawning child processes i.e. containers. Because of this, A single process could be a single point of failure.If failed, then there are orphaned processes. To make CRI lighter Kubernetes has removed Docker majorly because of this.</li><li><b>Docker becomes a paid subscription</b> for a large enterprise that has more than 250 employees or $10 million in revenue, starting at $5 per user per month. It is important to note that <u> Docker Desktop remains free for personal use, educational institutions, non-commercial open-source projects, and small businesses under the new Docker Personal plan</u>.</li><ul>"
           },
           {
             "module": "inner_sub_heading",
@@ -37,13 +37,13 @@
           {
             "module": "paragraph",
             "align": "justify",
-            "value": "Yes, we have alternatives that have rectified most of these issues. So build an image with Buildah, run a container with Podman & move images with Skopeo. So these tools wont run without Daemon in background. <ul><li><b>Buildah</b> is a lightweight tool that builds the images with OCI satndards without a daemon. It can pull images from Docker registry or <a href='https://quay.io/'>Quay.io</a> or any custom registry. You can use shell script or Dockerfile to build the images. </li><li><b>Podman</b> comes to run the image as containers and the same one, you do not need daemon process to start or manage a container. The commands you are familiar with in Docker work the same for Podman even u can change alias docker=podman in your system. You wont feel the difference. Podman uses Buildah on behind to create and pull the images.Podman gives more support with Kubernetes than Docker.</li><li><b>Skopeo</b> is a command line utility that performs various operations on container images and image repositories and it can work with OCI images as well as the original Docker v2 images. This is the backend for Podman, CRI-O, Buildah and friends</li></ul> <br/><br/> Since Podman touches all we can dig deeper with Podman"
+            "value": "Yes, we have alternatives that have rectified most of these issues. Build an image with Buildah, run a container with Podman & move images with Skopeo. All these tools wont run without Daemon in background. <ul><li><b>Buildah</b> is a lightweight tool that builds the images with OCI satndards without a daemon. It can pull images from Docker registry or <a href='https://quay.io/'>Quay.io</a> or any custom registry. You can use shell script or Dockerfile to build the images. </li><li><b>Podman</b> comes to run the image as containers and the same one, you do not need daemon process to start or manage a container. The commands you are familiar with in Docker work the same for Podman even u can change alias docker=podman in your system. You wont feel the difference. Podman uses Buildah on behind to create and pull the images.Podman gives more support with Kubernetes than Docker.</li><li><b>Skopeo</b> is a command line utility that performs various operations on container images and image repositories and it can work with OCI images as well as the original Docker v2 images. This is the backend for Podman, CRI-O, Buildah and friends</li></ul> <br/> Since Podman touches all we can dig deeper with Podman <br/>"
           },
           {
             "module": "image_and_text",
             "align_image": "left",
             "img_src":"https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/new-containerization-tools/bash.jpeg",
-            "value": "<h3>How easier to use Podman for Docker user</h3><ul><li><span class='code'>brew install podman</span></li><br><li><span class='code'>podman machine init</span></li><br><li><span class='code'>podman machine start</span></li><br><li><span class='code'> echo \"alias docker=podman\" >> .bashrc </span></li><br></ul><br>Now you can start using the same docker commands."
+            "value": "<h3>How to migrate from Docker to Podman</h3><ul><li><span class='code'>brew install podman</span></li><br><li><span class='code'>podman machine init</span></li><br><li><span class='code'>podman machine start</span></li><br><li><span class='code'> echo \"alias docker=podman\" >> .bashrc </span></li><br></ul><br>Now you can start using the same docker commands."
           }
         ]
       }
