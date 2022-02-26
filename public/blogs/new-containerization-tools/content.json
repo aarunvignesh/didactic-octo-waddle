@@ -53,7 +53,7 @@
             "module": "paragraph",
             "align": "justify",
             "value": "Similar to Docker compose podman has its own Podman compose tool. You can use the same Docker compose file to start all the services. Networks & Volumes specified in compose file are provisioned while running the listed services. You have to install this separate using the following command. <br><br><span class='code'>pip3 install https://github.com/containers/podman-compose/archive/devel.tar.gz</span>"
-          },
+          }
         ]
       }
     }
