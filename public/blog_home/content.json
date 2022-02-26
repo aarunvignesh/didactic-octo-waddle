@@ -16,10 +16,10 @@
       "readTime": "5 minutes"
     },
     {
-      "title": "Docker vs Podman",
-      "description": "Thinking out of Docker",
-      "image_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/podman/pod.png",
-      "href": "./blog/podman",
+      "title": "Whats new in containerization?",
+      "description": "Build image & Run containers without Daemon",
+      "image_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/new-containerization-tools/pod.png",
+      "href": "./blog/new-containerization-tools",
       "readTime": "5 minutes"
     }
 
