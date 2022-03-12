@@ -21,6 +21,13 @@
       "image_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/new-containerization-tools/pod.png",
       "href": "./blog/new-containerization-tools",
       "readTime": "5 minutes"
+    },
+    {
+      "title": "Getting started with Pulumi",
+      "description": "Maintain infrastructure in your programming language",
+      "image_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/pulumi/pulumi.png",
+      "href": "./blog/pulumi",
+      "readTime": "5 minutes"
     }
 
   ]
