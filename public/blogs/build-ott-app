@@ -1,0 +1,129 @@
+{
+  "head": {
+    "title": "Building an OTT Platform with Node.js, S3, and CloudFront",
+    "og_title": "Building an OTT Platform with Node.js, S3, and CloudFront",
+    "description": "An architecture walkthrough for an OTT video platform: ingesting to S3, transcoding to adaptive bitrates, and serving through CloudFront with Node.js orchestrating the pipeline.",
+    "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?fm=jpg&q=60&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0",
+    "author_name": "Arun Vignesh",
+    "date": "01-08-2026",
+    "page_url": "https://arun-tech-blogs.herokuapp.com/blog/ott-platform-nodejs-s3-cloudfront",
+    "page_id": "1785657600000",
+    "readTime": "5 minutes"
+  },
+  "body": {
+    "blog": {
+      "heading": "Building an OTT Platform with Node.js, S3, and CloudFront",
+      "author": "Arun Vignesh",
+      "content": [
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "An OTT platform sounds like a huge undertaking, but the core architecture is a fairly small set of well-understood pieces working together: object storage, a transcoding step, a CDN, and a thin server layer tying it all together. This post walks through building one with S3 for storage, a codec pipeline for transcoding, CloudFront as the CDN, and Node.js as the glue holding it together — not doing the heavy lifting itself, but orchestrating everything around it."
+        },
+        {
+          "module": "sub_heading",
+          "value": "The architecture at a glance"
+        },
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "At a high level, video flows through four stages: a raw file lands in an S3 input bucket, a transcoding step converts it into multiple bitrate renditions and writes them to an S3 output bucket, CloudFront sits in front of that output bucket as the CDN, and Node.js handles everything around the edges — authentication, upload URLs, kicking off transcoding, and generating the URLs the player actually requests. Node.js never touches the raw video bytes for transcoding; that work goes to a native codec (FFmpeg) precisely because it's CPU-heavy in a way that would block Node's single thread."
+        },
+        {
+          "module": "image",
+          "value": "https://images.unsplash.com/photo-1584169417032-d34e8d805e8b?fm=jpg&q=60&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0"
+        },
+        {
+          "module": "sub_heading",
+          "value": "Ingesting video into S3"
+        },
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "Rather than routing large video uploads through your Node server, have the client upload directly to S3 using a pre-signed URL. Node's role here is small but important: authenticate the request, decide where the file should live (a per-user or per-title prefix), and hand back a short-lived signed URL scoped to that exact object. This keeps large file transfers off your application server entirely, which matters once you're handling anything beyond a handful of concurrent uploads."
+        },
+        {
+          "module": "inner_sub_heading",
+          "value": "Triggering the pipeline on upload"
+        },
+        {
+          "module": "image_and_text",
+          "align_image": "left",
+          "img_src": "https://images.unsplash.com/photo-1698668975271-2ba9a323be6b?fm=jpg&q=60&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0",
+          "value": "<p>Once the file lands in the input bucket, an S3 event notification is what actually starts the pipeline — not Node polling the bucket. That event can go straight to a transcoding job (an ECS task, a Lambda kicking off a longer-running process, or a queue message your worker fleet picks up). Node's job at this point is usually to write a record to the database marking the asset as 'processing' and to expose that status to the client, rather than doing the triggering itself.</p><p>This decoupling matters: if the transcoding step fails or needs retrying, it doesn't take your API down with it — it's an independent job with its own lifecycle.</p>"
+        },
+        {
+          "module": "sub_heading",
+          "value": "Transcoding into adaptive bitrates"
+        },
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "The transcoding step reads the source file from S3 and produces several renditions — say 480p, 720p, and 1080p at different bitrates — segmented into HLS or DASH chunks with a manifest describing them. This is exactly the kind of CPU-bound, long-running work that shouldn't run inside your Node request handlers: it belongs in a separate worker process, container, or managed service (AWS MediaConvert is a common managed alternative to running your own FFmpeg workers, if you'd rather not manage that infrastructure yourself)."
+        },
+        {
+          "module": "inner_sub_heading",
+          "value": "Running the codec as its own worker"
+        },
+        {
+          "module": "image_and_text",
+          "align_image": "right",
+          "img_src": "https://images.unsplash.com/photo-1763568258330-039d2f3dfc76?fm=jpg&q=60&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0",
+          "value": "<p>If you're running your own FFmpeg-based worker instead of a managed transcoding service, it's typically a small standalone Node process that shells out to FFmpeg with <b>child_process</b>, watches for completion or failure, and writes the output renditions plus manifest back to the S3 output bucket. It's still Node code, just running as an isolated worker rather than inside your public-facing API — so a slow or failed transcode never blocks a request from an unrelated user.</p>"
+        },
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "When the job finishes, the worker updates the asset's status in the database and the manifest becomes available at a predictable S3 key. From here on, the video is ready to stream — nothing further needs to run per playback request."
+        },
+        {
+          "module": "quotation",
+          "value": "Transcode once, serve millions of times — that ratio is the whole point of the pipeline."
+        },
+        {
+          "module": "break"
+        },
+        {
+          "module": "sub_heading",
+          "value": "Serving through CloudFront"
+        },
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "Once renditions exist in the output bucket, CloudFront is set up with that bucket as its origin. From that point, every manifest and segment request goes through CloudFront's edge locations rather than back to S3 directly — the first request for a given segment fetches from the origin and caches it at the edge, and every subsequent request nearby is served from cache. This is what actually makes an OTT platform scale globally: your S3 bucket and any origin servers see a small fraction of the traffic your viewers generate."
+        },
+        {
+          "module": "inner_sub_heading",
+          "value": "What Node.js actually serves at playback time"
+        },
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "By the time a viewer hits play, Node isn't streaming video bytes at all. Its job is to authenticate the viewer, check entitlement (do they have access to this title), and return the CloudFront URL for the manifest — often a signed CloudFront URL or cookie if the content needs to stay private. From there, the client player (hls.js, dash.js, or a native player) talks directly to CloudFront for every manifest and segment request, and Node is out of the request path entirely until the next API call."
+        },
+        {
+          "module": "inner_sub_heading",
+          "value": "Keeping content access-controlled"
+        },
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "For anything beyond public content, use CloudFront signed URLs or signed cookies rather than making the S3 bucket or its CloudFront distribution publicly readable. Node generates these signatures at request time using a private key, with a short expiry, so a shared link can't be replayed indefinitely or handed to someone who never authenticated."
+        },
+        {
+          "module": "break"
+        },
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "Put together, the pattern is: Node handles identity, authorization, and orchestration; S3 holds the raw and processed video; a dedicated codec process does the actual transcoding work; and CloudFront takes on the job of getting bytes to viewers quickly at scale. Each piece does the part it's actually good at, which is what lets this architecture hold up well past the point where a single server ever could."
+        },
+        {
+          "module": "paragraph",
+          "align": "center",
+          "value": "Right tool, right layer."
+        }
+      ]
+    }
+  }
+}
