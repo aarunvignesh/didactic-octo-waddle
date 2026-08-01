@@ -34,6 +34,13 @@
       "description": "A practical walkthrough of diagnosing and fixing common Node.js performance problems, from profiling to event loop blocking to memory leaks.",
       "image_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/optimise-node/car-dashboard.avif",
       "href": "./blog/optimise-node",
+      "readTime": "4 minutes"
+    },
+    {
+      "title": "Building an OTT Platform with Node.js, S3, and CloudFront",
+      "description": "An architecture walkthrough for an OTT video platform: ingesting to S3, transcoding to adaptive bitrates, and serving through CloudFront with Node.js orchestrating the pipeline.",
+      "image_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/design-own-ott/video.avif",
+      "href": "./blog/design-own-ott",
       "readTime": "5 minutes"
     }
 
