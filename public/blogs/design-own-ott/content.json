@@ -3,7 +3,7 @@
     "title": "Building an OTT Platform with Node.js, S3, and CloudFront",
     "og_title": "Building an OTT Platform with Node.js, S3, and CloudFront",
     "description": "An architecture walkthrough for an OTT video platform: ingesting to S3, transcoding to adaptive bitrates, and serving through CloudFront with Node.js orchestrating the pipeline.",
-    "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?fm=jpg&q=60&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0",
+    "image": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/design-ow-ott/video.avif",
     "author_name": "Arun Vignesh",
     "date": "01-08-2026",
     "page_url": "https://arun-tech-blogs.herokuapp.com/blog/ott-platform-nodejs-s3-cloudfront",
@@ -31,7 +31,7 @@
         },
         {
           "module": "image",
-          "value": "https://images.unsplash.com/photo-1584169417032-d34e8d805e8b?fm=jpg&q=60&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0"
+          "value": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/design-ow-ott/server-link.avif"
         },
         {
           "module": "sub_heading",
@@ -49,7 +49,7 @@
         {
           "module": "image_and_text",
           "align_image": "left",
-          "img_src": "https://images.unsplash.com/photo-1698668975271-2ba9a323be6b?fm=jpg&q=60&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0",
+          "img_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/design-ow-ott/code-laptop.avif",
           "value": "<p>Once the file lands in the input bucket, an S3 event notification is what actually starts the pipeline — not Node polling the bucket. That event can go straight to a transcoding job (an ECS task, a Lambda kicking off a longer-running process, or a queue message your worker fleet picks up). Node's job at this point is usually to write a record to the database marking the asset as 'processing' and to expose that status to the client, rather than doing the triggering itself.</p><p>This decoupling matters: if the transcoding step fails or needs retrying, it doesn't take your API down with it — it's an independent job with its own lifecycle.</p>"
         },
         {
@@ -68,7 +68,7 @@
         {
           "module": "image_and_text",
           "align_image": "right",
-          "img_src": "https://images.unsplash.com/photo-1763568258330-039d2f3dfc76?fm=jpg&q=60&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0",
+          "img_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/design-ow-ott/bot.avif",
           "value": "<p>If you're running your own FFmpeg-based worker instead of a managed transcoding service, it's typically a small standalone Node process that shells out to FFmpeg with <b>child_process</b>, watches for completion or failure, and writes the output renditions plus manifest back to the S3 output bucket. It's still Node code, just running as an isolated worker rather than inside your public-facing API — so a slow or failed transcode never blocks a request from an unrelated user.</p>"
         },
         {
