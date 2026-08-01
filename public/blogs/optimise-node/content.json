@@ -1,0 +1,124 @@
+{
+  "head": {
+    "title": "How to Address Performance Issues in Node.js",
+    "og_title": "How to Address Performance Issues in Node.js",
+    "description": "A practical walkthrough of diagnosing and fixing common Node.js performance problems, from profiling to event loop blocking to memory leaks.",
+    "image": "https://images.unsplash.com/photo-1680992044138-ce4864c2b962?fm=jpg&q=60&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0",
+    "author_name": "Arun Vignesh",
+    "date": "01-08-2026",
+    "page_url": "https://arun-tech-blogs.herokuapp.com/blog/node-js-performance-issues",
+    "page_id": "1785656400000",
+    "readTime": "4 minutes"
+  },
+  "body": {
+    "blog": {
+      "heading": "How to Address Performance Issues in Node.js",
+      "author": "Arun Vignesh",
+      "content": [
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "Node.js handles thousands of concurrent connections comfortably, right up until it doesn't. When a Node app slows down, the cause is rarely mysterious — it's almost always one of a small set of familiar culprits. This post walks through how to find the real bottleneck and the fixes that actually move the needle, rather than the ones that just feel productive."
+        },
+        {
+          "module": "sub_heading",
+          "value": "Why Node.js performance issues happen"
+        },
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "Node runs your JavaScript on a single thread. That's what makes it lightweight and easy to reason about, but it also means anything that blocks that thread blocks everything else — every other request, every timer, every pending I/O callback. <br/><ul><li>Most 'Node is slow' complaints trace back to the event loop being blocked by synchronous work</li><li>The rest usually come from unbounded memory growth or database calls that were never optimized</li><li>Very few are actually about Node itself being too slow for the job</li></ul> Knowing this narrows the search considerably before you write a single line of optimization code."
+        },
+        {
+          "module": "image",
+          "value": "https://images.unsplash.com/photo-1763568258330-039d2f3dfc76?fm=jpg&q=60&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0"
+        },
+        {
+          "module": "sub_heading",
+          "value": "Find the bottleneck before you touch any code"
+        },
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "It's tempting to guess at a fix — add a cache here, tweak a query there — but guessing wastes time and sometimes makes things worse. Profile first."
+        },
+        {
+          "module": "inner_sub_heading",
+          "value": "Profile before you optimize"
+        },
+        {
+          "module": "image_and_text",
+          "align_image": "left",
+          "img_src": "https://images.unsplash.com/photo-1686061592689-312bbfb5c055?fm=jpg&q=60&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0",
+          "value": "<p>Node ships with a built-in profiler (<b>node --prof</b>) that samples the call stack and shows exactly where CPU time is going. For a friendlier view, tools like <b>clinic.js</b> turn that raw data into flame graphs, so you can see at a glance which function is eating the most time instead of reading through thousands of stack samples by hand.</p><p>Application performance monitoring tools take this further by tracking response times and CPU usage continuously in production, so you catch regressions before users report them rather than after.</p>"
+        },
+        {
+          "module": "inner_sub_heading",
+          "value": "Watch for event loop lag"
+        },
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "Beyond CPU profiling, keep an eye on event loop lag specifically — the delay between when a callback should run and when it actually does. A steadily climbing lag is usually the clearest early signal that something synchronous is hogging the thread, often well before response times get bad enough for anyone to complain."
+        },
+        {
+          "module": "quotation",
+          "value": "You can't fix what you haven't measured."
+        },
+        {
+          "module": "break"
+        },
+        {
+          "module": "sub_heading",
+          "value": "Fixes that actually move the needle"
+        },
+        {
+          "module": "inner_sub_heading",
+          "value": "Get heavy work off the main thread"
+        },
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "CPU-heavy operations — image resizing, large JSON parsing, cryptographic hashing, complex calculations — block the event loop for every other request while they run. Move them to <b>worker_threads</b> or an external queue (like a job processed by a separate service) so the main thread stays free to keep handling incoming requests. If the operation genuinely needs to run inline, break it into smaller chunks and yield back to the event loop between them rather than running it as one long synchronous block."
+        },
+        {
+          "module": "inner_sub_heading",
+          "value": "Cache what doesn't need to be recomputed"
+        },
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "A surprising share of 'Node performance problems' are really database or network latency problems wearing a Node costume. If the same query or API call runs repeatedly with the same result, cache it — in memory for single-instance apps, or in something like Redis when you're running multiple instances that need to share the cache. Just make sure there's a clear invalidation strategy, since stale cached data creates its own class of bugs."
+        },
+        {
+          "module": "image_and_text",
+          "align_image": "right",
+          "img_src": "https://images.unsplash.com/photo-1563104307-6685e370767d?fm=jpg&q=60&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0",
+          "value": "<p>Connection pooling deserves a special mention here. Opening a new database connection for every request is expensive, and it's one of the most common causes of a Node app that gets slower under load specifically — not because the CPU is struggling, but because it's queued up waiting on connections. Reusing a pool of open connections usually recovers a meaningful chunk of throughput with very little code change.</p>"
+        },
+        {
+          "module": "inner_sub_heading",
+          "value": "Fix memory leaks before they page you"
+        },
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "Node apps that slow down gradually over hours or days, then recover after a restart, usually point to a memory leak rather than a CPU bottleneck. Common causes are event listeners that are added but never removed, caches with no size limit, and closures holding references to large objects longer than intended. Taking heap snapshots at intervals under <b>Chrome DevTools</b> and comparing them will usually show exactly which object type keeps growing, which is the fastest way to track the leak back to its source."
+        },
+        {
+          "module": "break"
+        },
+        {
+          "module": "paragraph",
+          "align": "justify",
+          "value": "None of this requires guesswork. Profile to find where time actually goes, keep the event loop free of blocking work, cache and pool what's expensive to repeat, and watch memory over time rather than just in the moment. Do those four things consistently and most Node performance issues resolve themselves before they ever reach production."
+        },
+        {
+          "module": "paragraph",
+          "align": "center",
+          "value": "Measure twice, optimize once."
+        }
+      ]
+    }
+  }
+}
