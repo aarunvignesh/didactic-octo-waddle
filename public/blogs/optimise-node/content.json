@@ -3,7 +3,7 @@
     "title": "How to Address Performance Issues in Node.js",
     "og_title": "How to Address Performance Issues in Node.js",
     "description": "A practical walkthrough of diagnosing and fixing common Node.js performance problems, from profiling to event loop blocking to memory leaks.",
-    "image": "https://images.unsplash.com/photo-1680992044138-ce4864c2b962?fm=jpg&q=60&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0",
+    "image": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/optimise-node/server.avif",
     "author_name": "Arun Vignesh",
     "date": "01-08-2026",
     "page_url": "https://arun-tech-blogs.herokuapp.com/blog/node-js-performance-issues",
@@ -31,7 +31,7 @@
         },
         {
           "module": "image",
-          "value": "https://images.unsplash.com/photo-1763568258330-039d2f3dfc76?fm=jpg&q=60&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0"
+          "value": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/optimise-node/code-laptop.avif"
         },
         {
           "module": "sub_heading",
@@ -49,7 +49,7 @@
         {
           "module": "image_and_text",
           "align_image": "left",
-          "img_src": "https://images.unsplash.com/photo-1686061592689-312bbfb5c055?fm=jpg&q=60&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0",
+          "img_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/optimise-node/dashboard.avif",
           "value": "<p>Node ships with a built-in profiler (<b>node --prof</b>) that samples the call stack and shows exactly where CPU time is going. For a friendlier view, tools like <b>clinic.js</b> turn that raw data into flame graphs, so you can see at a glance which function is eating the most time instead of reading through thousands of stack samples by hand.</p><p>Application performance monitoring tools take this further by tracking response times and CPU usage continuously in production, so you catch regressions before users report them rather than after.</p>"
         },
         {
@@ -93,7 +93,7 @@
         {
           "module": "image_and_text",
           "align_image": "right",
-          "img_src": "https://images.unsplash.com/photo-1563104307-6685e370767d?fm=jpg&q=60&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0",
+          "img_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/optimise-node/car-dashboard.avif",
           "value": "<p>Connection pooling deserves a special mention here. Opening a new database connection for every request is expensive, and it's one of the most common causes of a Node app that gets slower under load specifically — not because the CPU is struggling, but because it's queued up waiting on connections. Reusing a pool of open connections usually recovers a meaningful chunk of throughput with very little code change.</p>"
         },
         {
