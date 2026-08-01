@@ -28,6 +28,13 @@
       "image_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/pulumi/pulumi.png",
       "href": "./blog/pulumi",
       "readTime": "5 minutes"
+    },
+    {
+      "title": "How to Address Performance Issues in Node.js",
+      "description": "A practical walkthrough of diagnosing and fixing common Node.js performance problems, from profiling to event loop blocking to memory leaks.",
+      "image_src": "https://raw.githubusercontent.com/aarunvignesh/didactic-octo-waddle/master/public/blogs/pulumi/pulumi.png",
+      "href": "./blog/optimise-node",
+      "readTime": "5 minutes"
     }
 
   ]
